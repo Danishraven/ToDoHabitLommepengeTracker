@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- This LinearLayout holds the screen content and has a bottom margin -->
-    <!-- to avoid overlapping with the BottomAppBar -->
+    <!-- This LinearLayout holds the screen content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_marginBottom="?attr/actionBarSize">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/balance_label"
@@ -41,11 +39,9 @@
         android:id="@+id/fabAddTransaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottom_bar"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="Add Transaction"
         app:srcCompat="@android:drawable/ic_input_add" />
-
-    <include layout="@layout/view_bottom_navigation" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
