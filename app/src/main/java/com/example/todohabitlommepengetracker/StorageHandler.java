@@ -8,29 +8,34 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class TodoStorage {
+public class StorageHandler {
 
-    private static final String PREFS_NAME = "todo_prefs";
-    private static final String KEY_TODOS = "todos";
+    private final String PREFS_NAME;
+    private final String KEY;
 
-    public static void save(Context context, ArrayList<TodoItem> todos) {
+    public StorageHandler(String prefs_name, String key){
+        PREFS_NAME = prefs_name;
+        KEY = key;
+    }
+
+    public <T> void save(Context context, ArrayList<T> list) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        String json = new Gson().toJson(todos);
-        editor.putString(KEY_TODOS, json);
+        String json = new Gson().toJson(list);
+        editor.putString(KEY, json);
         editor.apply();
     }
 
-    public static ArrayList<TodoItem> load(Context context) {
+    public <T> ArrayList<T> load(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String json = prefs.getString(KEY_TODOS, null);
+        String json = prefs.getString(KEY, null);
 
         if (json == null) return new ArrayList<>();
 
         Type type = new TypeToken<ArrayList<TodoItem>>() {}.getType();
-        ArrayList<TodoItem> todos = new Gson().fromJson(json, type);
+        ArrayList<T> list = new Gson().fromJson(json, type);
 
-        return (todos != null) ? todos : new ArrayList<>();
+        return (list != null) ? list : new ArrayList<>();
     }
 }

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">WednesdayTodo</string>
+    <string name="app_name">ToDoHabitLommepengeTracker</string>
+    <string name="info">Info</string>
+    <string name="delete">Delete</string>
+    <string name="todo_title">Todo title</string>
+    <string name="save">Save</string>
 </resources>

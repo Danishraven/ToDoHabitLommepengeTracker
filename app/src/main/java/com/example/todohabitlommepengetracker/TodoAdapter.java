@@ -15,8 +15,10 @@ import java.util.List;
 
 public class TodoAdapter extends ArrayAdapter<TodoItem> {
 
-    public TodoAdapter(Context context, List<TodoItem> todos) {
+    StorageHandler storageHandler;
+    public TodoAdapter(Context context, List<TodoItem> todos, StorageHandler storageHandler) {
         super(context, 0, todos);
+        this.storageHandler = storageHandler;
     }
 
     @Override
@@ -46,13 +48,13 @@ public class TodoAdapter extends ArrayAdapter<TodoItem> {
         checkCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
             todo.setCompleted(isChecked);
             notifyDataSetChanged();
-            TodoStorage.save(getContext(), new ArrayList<>(getAllItems()));
+            storageHandler.save(getContext(), new ArrayList<>(getAllItems()));
         });
 
         btnDelete.setOnClickListener(v -> {
             remove(todo);
             notifyDataSetChanged();
-            TodoStorage.save(getContext(), new ArrayList<>(getAllItems()));
+            storageHandler.save(getContext(), new ArrayList<>(getAllItems()));
         });
 
 
