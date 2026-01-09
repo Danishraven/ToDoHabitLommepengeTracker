@@ -16,6 +16,18 @@
             android:name=".AddTodoActivity"
             android:exported="false" />
         <activity
+            android:name=".AddHabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TodoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllowanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

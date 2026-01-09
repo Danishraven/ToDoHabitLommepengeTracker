@@ -3,15 +3,13 @@ package com.example.todohabitlommepengetracker;
 
 import java.util.Date;
 
-public class Habit {
+public class HabitItem {
     private String title;
     private Frequency frequency;
     private Frequency target;
     private Date startDate;
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
 
     public void setTitle(String title) {
         this.title = title;
@@ -41,7 +39,7 @@ public class Habit {
         this.startDate = startDate;
     }
 
-    public Habit(String title, Frequency frequency, Frequency target, Date startDate){
+    public HabitItem(String title, Frequency frequency, Frequency target, Date startDate){
         this.title = title;
         this.frequency = frequency;
         this.target = target;

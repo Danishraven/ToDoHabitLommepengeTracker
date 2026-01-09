@@ -1,40 +1,45 @@
 package com.example.todohabitlommepengetracker;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class StorageHandler {
+// No longer abstract, and no reflection
+public class StorageHandler<T> {
 
     private final String PREFS_NAME;
     private final String KEY;
+    private final Type listType;
 
-    public StorageHandler(String prefs_name, String key){
-        PREFS_NAME = prefs_name;
-        KEY = key;
+    // The type is now passed into the constructor
+    public StorageHandler(String prefs_name, String key, Type listType){
+        this.PREFS_NAME = prefs_name;
+        this.KEY = key;
+        this.listType = listType;
     }
 
-    public <T> void save(Context context, ArrayList<T> list) {
+    public void save(Context context, ArrayList<T> list) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        String json = new Gson().toJson(list);
+        String json = new Gson().toJson(list, listType);
         editor.putString(KEY, json);
         editor.apply();
     }
 
-    public <T> ArrayList<T> load(Context context) {
+    public ArrayList<T> load(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String json = prefs.getString(KEY, null);
 
-        if (json == null) return new ArrayList<>();
+        if (json == null) {
+            return new ArrayList<>();
+        }
 
-        Type type = new TypeToken<ArrayList<TodoItem>>() {}.getType();
-        ArrayList<T> list = new Gson().fromJson(json, type);
+        ArrayList<T> list = new Gson().fromJson(json, listType);
 
         return (list != null) ? list : new ArrayList<>();
     }
