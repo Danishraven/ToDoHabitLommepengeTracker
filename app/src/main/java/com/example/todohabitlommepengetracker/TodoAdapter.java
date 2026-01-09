@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TodoAdapter extends ArrayAdapter<TodoItem> {
 
-    StorageHandler storageHandler;
+    final StorageHandler storageHandler;
     public TodoAdapter(Context context, List<TodoItem> todos, StorageHandler storageHandler) {
         super(context, 0, todos);
         this.storageHandler = storageHandler;
