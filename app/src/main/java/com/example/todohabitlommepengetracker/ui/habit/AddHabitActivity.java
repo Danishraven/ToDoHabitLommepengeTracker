@@ -1,4 +1,4 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.habit;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.todohabitlommepengetracker.model.Frequency;
+import com.example.todohabitlommepengetracker.R;
 
 import java.util.Calendar;
 import java.util.Date;

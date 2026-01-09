@@ -13,22 +13,13 @@
         android:theme="@style/Theme.WednesdayTodo"
         tools:targetApi="31">
         <activity
-            android:name=".AddTodoActivity"
+            android:name=".ui.todo.AddTodoActivity"
             android:exported="false" />
         <activity
-            android:name=".AddHabitActivity"
+            android:name=".ui.habit.AddHabitActivity"
             android:exported="false" />
         <activity
-            android:name=".TodoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HabitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AllowanceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.todo.TodoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.habit.HabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.allowance.AllowanceActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

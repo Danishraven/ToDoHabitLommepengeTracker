@@ -1,4 +1,4 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.todo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.todohabitlommepengetracker.R;
 
 public class AddTodoActivity extends AppCompatActivity {
 

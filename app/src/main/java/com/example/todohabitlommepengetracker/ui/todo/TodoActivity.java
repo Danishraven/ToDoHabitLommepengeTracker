@@ -1,4 +1,4 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.todo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.todohabitlommepengetracker.ui.common.BottomNavigationHandler;
+import com.example.todohabitlommepengetracker.R;
+import com.example.todohabitlommepengetracker.data.TodoStorageHandler;
+import com.example.todohabitlommepengetracker.model.TodoItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

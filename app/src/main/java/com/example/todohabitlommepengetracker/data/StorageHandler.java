@@ -1,4 +1,4 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

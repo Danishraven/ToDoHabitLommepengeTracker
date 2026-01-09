@@ -1,4 +1,4 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.todo;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.example.todohabitlommepengetracker.R;
+import com.example.todohabitlommepengetracker.data.TodoStorageHandler;
+import com.example.todohabitlommepengetracker.model.TodoItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +32,7 @@ public class TodoAdapter extends ArrayAdapter<TodoItem> {
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.row_todo, parent, false);
+                    .inflate(R.layout.item_todo, parent, false);
         }
 
         TextView textTitle = convertView.findViewById(R.id.textTitle);

@@ -1,5 +1,6 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.data;
 
+import com.example.todohabitlommepengetracker.model.HabitItem;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 

@@ -1,7 +1,12 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.common;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import com.example.todohabitlommepengetracker.ui.allowance.AllowanceActivity;
+import com.example.todohabitlommepengetracker.R;
+import com.example.todohabitlommepengetracker.ui.habit.HabitActivity;
+import com.example.todohabitlommepengetracker.ui.todo.TodoActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomNavigationHandler {

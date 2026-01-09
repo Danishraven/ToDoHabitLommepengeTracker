@@ -1,9 +1,11 @@
-package com.example.todohabitlommepengetracker;
+package com.example.todohabitlommepengetracker.ui.allowance;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.todohabitlommepengetracker.R;
+import com.example.todohabitlommepengetracker.ui.common.BottomNavigationHandler;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AllowanceActivity extends AppCompatActivity {
