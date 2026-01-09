@@ -11,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.todohabitlommepengetracker.data.HabitStorageHandler;
+import com.example.todohabitlommepengetracker.data.TransactionStorageHandler;
 import com.example.todohabitlommepengetracker.R;
 import com.example.todohabitlommepengetracker.model.HabitItem;
+import com.example.todohabitlommepengetracker.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,10 +23,12 @@ import java.util.List;
 public class HabitAdapter extends ArrayAdapter<HabitItem> {
 
     final HabitStorageHandler storageHandler;
+    final TransactionStorageHandler transactionStorageHandler;
 
     public HabitAdapter(Context context, List<HabitItem> habits, HabitStorageHandler storageHandler) {
         super(context, 0, habits);
         this.storageHandler = storageHandler;
+        this.transactionStorageHandler = new TransactionStorageHandler();
     }
 
     @Override
@@ -46,6 +50,12 @@ public class HabitAdapter extends ArrayAdapter<HabitItem> {
         checkCompleted.setChecked(habit.isCompletedOn(new Date()));
 
         checkCompleted.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Only create a transaction if the item is being completed and has a reward
+            if (isChecked && !habit.isCompletedOn(new Date()) && habit.getReward() > 0) {
+                ArrayList<Transaction> transactions = transactionStorageHandler.load(getContext());
+                transactions.add(new Transaction(new Date(), habit.getReward(), habit.getTitle()));
+                transactionStorageHandler.save(getContext(), transactions);
+            }
             habit.toggleCompletionForToday();
             notifyDataSetChanged();
             storageHandler.save(getContext(), new ArrayList<>(getAllItems()));

@@ -11,13 +11,15 @@ public class HabitItem {
     private Frequency frequency;
     private Frequency target; // This seems unused, but keeping it for now
     private Date startDate;
+    private double reward;
     private ArrayList<Date> completionDates = new ArrayList<>();
 
-    public HabitItem(String title, Frequency frequency, Frequency target, Date startDate) {
+    public HabitItem(String title, Frequency frequency, Frequency target, Date startDate, double reward) {
         this.title = title;
         this.frequency = frequency;
         this.target = target;
         this.startDate = startDate;
+        this.reward = reward;
     }
 
     // --- Getters and Setters ---
@@ -28,6 +30,7 @@ public class HabitItem {
     public Date getStartDate() { return startDate; }
     public void setStartDate(Date startDate) { this.startDate = startDate; }
     public ArrayList<Date> getCompletionDates() { return completionDates; }
+    public double getReward() { return reward; }
 
     // --- Completion Logic ---
     public void toggleCompletionForToday() {

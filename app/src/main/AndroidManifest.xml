@@ -19,6 +19,9 @@
             android:name=".ui.habit.AddHabitActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.allowance.AddTransactionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.todo.TodoActivity"
             android:exported="true">
             <intent-filter>

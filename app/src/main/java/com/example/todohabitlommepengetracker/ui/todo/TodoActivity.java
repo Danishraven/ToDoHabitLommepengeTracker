@@ -49,8 +49,9 @@ public class TodoActivity extends AppCompatActivity {
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         String title = result.getData().getStringExtra(AddTodoActivity.EXTRA_TITLE);
+                        double reward = result.getData().getDoubleExtra(AddTodoActivity.EXTRA_REWARD, 0);
                         if (title != null && !title.trim().isEmpty()) {
-                            todoList.add(new TodoItem(title.trim()));
+                            todoList.add(new TodoItem(title.trim(), reward));
                             adapter.notifyDataSetChanged();
                             storageHandler.save(this, todoList);
                         }

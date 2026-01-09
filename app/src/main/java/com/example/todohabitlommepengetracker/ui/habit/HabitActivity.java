@@ -52,6 +52,7 @@ public class HabitActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Intent data = result.getData();
                         String title = data.getStringExtra(AddHabitActivity.EXTRA_TITLE);
+                        double reward = data.getDoubleExtra(AddHabitActivity.EXTRA_REWARD, 0);
                         String frequencyStr = data.getStringExtra(AddHabitActivity.EXTRA_FREQUENCY);
                         String targetStr = data.getStringExtra(AddHabitActivity.EXTRA_TARGET);
                         long startDateMillis = data.getLongExtra(AddHabitActivity.EXTRA_START_DATE, -1);
@@ -60,7 +61,7 @@ public class HabitActivity extends AppCompatActivity {
                             Frequency frequency = Frequency.valueOf(frequencyStr);
                             Frequency target = Frequency.valueOf(targetStr);
                             Date startDate = new Date(startDateMillis);
-                            habitList.add(new HabitItem(title.trim(), frequency, target, startDate));
+                            habitList.add(new HabitItem(title.trim(), frequency, target, startDate, reward));
                             adapter.notifyDataSetChanged();
                             storageHandler.save(this, habitList);
                         }

@@ -6,11 +6,13 @@ public class TodoItem {
     private final String title;
     private final Date dateCreated;
     private boolean completed;
+    private double reward;
 
-    public TodoItem(String title) {
+    public TodoItem(String title, double reward) {
         this.title = title;
         this.completed = false;
         this.dateCreated = new Date();
+        this.reward = reward;
     }
 
     public String getTitle() {
@@ -26,5 +28,8 @@ public class TodoItem {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-}
 
+    public double getReward() {
+        return reward;
+    }
+}

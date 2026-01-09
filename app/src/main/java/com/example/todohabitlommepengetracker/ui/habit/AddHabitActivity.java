@@ -20,6 +20,7 @@ import java.util.Date;
 public class AddHabitActivity extends AppCompatActivity {
 
     public static final String EXTRA_TITLE = "extra_title";
+    public static final String EXTRA_REWARD = "extra_reward";
     public static final String EXTRA_FREQUENCY = "extra_frequency";
     public static final String EXTRA_TARGET = "extra_target";
     public static final String EXTRA_START_DATE = "extra_start_date";
@@ -30,6 +31,7 @@ public class AddHabitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_habit);
 
         EditText editTitle = findViewById(R.id.edit_text_title);
+        EditText editReward = findViewById(R.id.edit_text_reward);
         Spinner spinnerFrequency = findViewById(R.id.spinner_frequency);
         Spinner spinnerTarget = findViewById(R.id.spinner_target);
         DatePicker datePickerStartDate = findViewById(R.id.date_picker_start_date);
@@ -42,10 +44,21 @@ public class AddHabitActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(v -> {
             String title = editTitle.getText().toString().trim();
+            String rewardStr = editReward.getText().toString().trim();
 
             if (title.isEmpty()) {
                 Toast.makeText(this, "Please enter a title", Toast.LENGTH_SHORT).show();
                 return;
+            }
+
+            double reward = 0;
+            if (!rewardStr.isEmpty()) {
+                try {
+                    reward = Double.parseDouble(rewardStr);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Invalid reward amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
 
             Frequency frequency = (Frequency) spinnerFrequency.getSelectedItem();
@@ -60,6 +73,7 @@ public class AddHabitActivity extends AppCompatActivity {
 
             Intent result = new Intent();
             result.putExtra(EXTRA_TITLE, title);
+            result.putExtra(EXTRA_REWARD, reward);
             result.putExtra(EXTRA_FREQUENCY, frequency.name());
             result.putExtra(EXTRA_TARGET, target.name());
             result.putExtra(EXTRA_START_DATE, startDate.getTime());
